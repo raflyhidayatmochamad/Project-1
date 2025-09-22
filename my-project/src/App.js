@@ -1,33 +1,62 @@
-import React, { useEffect, useState } from "react";
-import MyNavbar from "./component/navbar";
-import { API_URL } from "./utils/constansts";   // pastikan path sesuai
+// import React, { Component } from 'react';
+// import './App.css';
+import React, { Component } from 'react';
+import NavbarComp from './component/NavbarComp';
 
-function App() {
-  const [products, setProducts] = useState([]);
+import { Row, Col, Container } from 'react-bootstrap';
+import ListCategory from './component/ListCategory';
+import Hasil from './component/Hasil';
+import Menus from './component/Menus';
+import { API_URL } from './utils/constants';
+import axios from 'axios';
 
-  useEffect(() => {
-    fetch(`${API_URL}/product`)   // endpoint sesuai db.json
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("DATA BACKEND:", data);
-        setProducts(data);
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menus: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get(API_URL + 'product')
+      .then(res => {
+        const menus = res.data;
+        this.setState({ menus });
       })
-      .catch((err) => console.error("Error:", err));
-  }, []);
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
-  return (
-    <div className="App">
-      <MyNavbar />
-      <h1>Daftar Produk</h1>
-      <ul>
-        {products.map((item) => (
-          <li key={item.id}>
-            {item.nama} - Rp {item.harga}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  render() {
+    // console.log(this.state.menus);
+    const { menus } = this.state;
+    return (
+      <div className="App">
+        <NavbarComp />
+        <div className="mt-3">
+          <Container fluid>
+            <Row>
+              <ListCategory />
+              <Col>
+                <h5><strong>Daftar Produk</strong></h5>
+                <hr />
+                <Row>
+                  {menus && menus.map((menu) => (
+                    // <h5>{menu.nama}</h5>
+                    <Menus
+                      key={menu.id}
+                      menu={menu}
+                    />
+                  ))}
+                </Row>
+              </Col>
+              <Hasil />
+            </Row>
+          </Container>
+        </div>
+      </div>
+    )
+  }
 }
-
-export default App;
