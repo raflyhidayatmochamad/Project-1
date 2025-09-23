@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function MyNavbar() {   // ✅ ganti nama fungsi, jangan "Navbar"
   return (
-    <Navbar bg="dark" expand="lg" variant="dark">
+    <Navbar bg="info" expand="lg" variant="info">
       <Container>
         <Navbar.Brand href="#home">My Project</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
