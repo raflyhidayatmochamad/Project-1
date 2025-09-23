@@ -1,62 +1,41 @@
-// import React, { Component } from 'react';
-// import './App.css';
-import React, { Component } from 'react';
-import NavbarComp from './component/NavbarComp';
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import MyNavbar from "./component/navbar";
+import ListCategories from "./component/ListCategory";
+import Hasil from "./component/Hasil";
+import Menus from "./component/Menus";
+import { API_URL } from "./utils/constants";
 
-import { Row, Col, Container } from 'react-bootstrap';
-import ListCategory from './component/ListCategory';
-import Hasil from './component/Hasil';
-import Menus from './component/Menus';
-import { API_URL } from './utils/constants';
-import axios from 'axios';
+function App() {
+  const [menus, setMenus] = useState([]);
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      menus: []
-    }
-  }
+  useEffect(() => {
+    fetch(`${API_URL}/product`)
+      .then((res) => res.json())
+      .then((data) => setMenus(data))
+      .catch((err) => console.error("Error:", err));
+  }, []);
 
-  componentDidMount() {
-    axios.get(API_URL + 'product')
-      .then(res => {
-        const menus = res.data;
-        this.setState({ menus });
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
-
-  render() {
-    // console.log(this.state.menus);
-    const { menus } = this.state;
-    return (
-      <div className="App">
-        <NavbarComp />
-        <div className="mt-3">
-          <Container fluid>
+  return (
+    <div className="App">
+      <MyNavbar />
+      <Container fluid>
+        <Row>
+          <ListCategories />
+          <Col md={6} className="mt-2">
+            <h5><strong>Daftar Produk</strong></h5>
+            <hr />
             <Row>
-              <ListCategory />
-              <Col>
-                <h5><strong>Daftar Produk</strong></h5>
-                <hr />
-                <Row>
-                  {menus && menus.map((menu) => (
-                    // <h5>{menu.nama}</h5>
-                    <Menus
-                      key={menu.id}
-                      menu={menu}
-                    />
-                  ))}
-                </Row>
-              </Col>
-              <Hasil />
+              {menus.map((menu) => (
+                <Menus key={menu.id} menu={menu} />
+              ))}
             </Row>
-          </Container>
-        </div>
-      </div>
-    )
-  }
+          </Col>
+          <Hasil />
+        </Row>
+      </Container>
+    </div>
+  );
 }
+
+export default App;
