@@ -3,18 +3,18 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
 
-
-const NavbarComp =()=>{
-return(
+const NavbarComp = () => {
+  return (
     <Navbar bg="secondary" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home"><strong> Rafly Store</strong></Navbar.Brand>
+        <Navbar.Brand as={Link} to="/"><strong> Rafly Store</strong></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/receipt">Cetak Pesanan</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
@@ -30,8 +30,6 @@ return(
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
-);
-
+  );
 };
-export default NavbarComp
+export default NavbarComp;

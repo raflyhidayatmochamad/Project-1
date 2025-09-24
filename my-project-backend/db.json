@@ -183,7 +183,59 @@
       }
     }
   ],
-  "keranjangs": [],
+  "keranjangs": [
+    {
+      "id": "3ed7",
+      "jumlah": 1,
+      "total_harga": 14000,
+      "product": {
+        "id": "2",
+        "kode": "K-02",
+        "nama": "Nasi Goreng",
+        "harga": 14000,
+        "is_ready": true,
+        "gambar": "nasi-goreng.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      }
+    },
+    {
+      "id": "a98b",
+      "jumlah": 1,
+      "total_harga": 12000,
+      "product": {
+        "id": "3",
+        "kode": "K-03",
+        "nama": "Nasi Rames",
+        "harga": 12000,
+        "is_ready": true,
+        "gambar": "nasi-rames.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      }
+    },
+    {
+      "id": "607e",
+      "jumlah": 1,
+      "total_harga": 10000,
+      "product": {
+        "id": "6",
+        "kode": "K-06",
+        "nama": "Bakso",
+        "harga": 10000,
+        "is_ready": true,
+        "gambar": "bakso.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      }
+    }
+  ],
   "pesanans": [
     {
       "id": "78eb",
@@ -644,6 +696,80 @@
             "harga": 14000,
             "is_ready": true,
             "gambar": "nasi-goreng.jpg",
+            "category": {
+              "id": 1,
+              "nama": "Makanan"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "833d",
+      "total_bayar": 52000,
+      "menus": [
+        {
+          "id": "f131",
+          "jumlah": 1,
+          "total_harga": 16000,
+          "product": {
+            "id": "1",
+            "kode": "K-01",
+            "nama": "Sate Ayam",
+            "harga": 16000,
+            "is_ready": true,
+            "gambar": "sate-ayam.jpg",
+            "category": {
+              "id": 1,
+              "nama": "Makanan"
+            }
+          }
+        },
+        {
+          "id": "2a13",
+          "jumlah": 1,
+          "total_harga": 14000,
+          "product": {
+            "id": "2",
+            "kode": "K-02",
+            "nama": "Nasi Goreng",
+            "harga": 14000,
+            "is_ready": true,
+            "gambar": "nasi-goreng.jpg",
+            "category": {
+              "id": 1,
+              "nama": "Makanan"
+            }
+          }
+        },
+        {
+          "id": "f202",
+          "jumlah": 1,
+          "total_harga": 12000,
+          "product": {
+            "id": "3",
+            "kode": "K-03",
+            "nama": "Nasi Rames",
+            "harga": 12000,
+            "is_ready": true,
+            "gambar": "nasi-rames.jpg",
+            "category": {
+              "id": 1,
+              "nama": "Makanan"
+            }
+          }
+        },
+        {
+          "id": "320b",
+          "jumlah": 1,
+          "total_harga": 10000,
+          "product": {
+            "id": "6",
+            "kode": "K-06",
+            "nama": "Bakso",
+            "harga": 10000,
+            "is_ready": true,
+            "gambar": "bakso.jpg",
             "category": {
               "id": 1,
               "nama": "Makanan"
